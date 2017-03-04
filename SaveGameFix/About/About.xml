@@ -3,6 +3,10 @@
   <name>SaveGameFix</name>
   <targetVersion>0.16.1393</targetVersion>
   <author>Fumblesneeze</author>
-  <url>https://www.youtube.com/watch?v=1YOiQ5Vrqe4</url>
-  <description>Replaces the original Rimworld menu background with an animation.\n\nThe video was made by The Dee (https://www.youtube.com/watch?v=1YOiQ5Vrqe4), bug him for a better version!\n\nThis is a rather big download so be patient!</description>
+  <url>https://github.com/Fumblesneeze/RimSaveGameFix</url>
+  <description>
+Fixes the "OutOfMemory" Exception when saving huge maps with a lot of mods installed.
+
+This is done by replacing a method with a less memory hungry one, so there's no guarantee it couldn't still happen, just less likely.
+  </description>
 </ModMetaData>
