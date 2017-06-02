@@ -1,4 +1,4 @@
-﻿using HugsLib.Source.Detour;
+﻿using Harmony;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +7,17 @@ using Verse;
 
 namespace AnimatedBG
 {
-    public class SaveGameFix
+    [HarmonyPatch(typeof(ArrayExposeUtility))]
+    [HarmonyPatch(nameof(ArrayExposeUtility.AddLineBreaksToLongString))]
+    public static class SaveGameFix
     {
-
-        [DetourMethod(typeof(ArrayExposeUtility), nameof(ArrayExposeUtility.AddLineBreaksToLongString))]
-        public static string AddLineBreaksToLongString(string str)
+        public static bool Prefix(string str, ref string __result)
         {
             var split = str.SplitBy(100);
 
-            return string.Join(Environment.NewLine, split.ToArray());
+            __result = string.Join(Environment.NewLine, split.ToArray());
+
+            return false;
         }
     }
 
